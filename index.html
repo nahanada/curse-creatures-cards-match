@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>特級呪物神経衰弱</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 背景流動アニメーション用のコンテナ -->
+    <div id="bg-animation-container" class="bg-animation"></div>
+
+    <div class="container">
+        <!-- メイン画面 -->
+        <section id="screen-main" class="screen active">
+            <h1 class="title">特級呪物<br><span class="highlight">神経衰弱</span></h1>
+            <p class="subtitle">Curse Creatures Cards Match</p>
+            <div class="menu-buttons">
+                <button id="btn-play-menu" class="btn">プレイ</button>
+                <button id="btn-records-menu" class="btn btn-secondary">記録</button>
+            </div>
+        </section>
+
+        <!-- 難易度選択画面 -->
+        <section id="screen-difficulty" class="screen">
+            <h2 class="section-title">難易度選択</h2>
+            <div class="difficulty-buttons">
+                <button class="btn btn-diff" data-cards="8">8枚 (4ペア)</button>
+                <button class="btn btn-diff" data-cards="12">12枚 (6ペア)</button>
+                <button class="btn btn-diff" data-cards="16">16枚 (8ペア)</button>
+                <button class="btn btn-diff" data-cards="24">24枚 (12ペア)</button>
+                <button class="btn btn-diff" data-cards="32">32枚 (16ペア)</button>
+            </div>
+            <button class="btn-back btn-link">メインに戻る</button>
+        </section>
+
+        <!-- ゲーム画面 -->
+        <section id="screen-game" class="screen">
+            <div class="game-header">
+                <div class="info-panel">
+                    <span class="label">難易度:</span> <span id="game-info-diff">0</span>枚
+                </div>
+                <div class="info-panel">
+                    <span class="label">タイム:</span> <span id="game-timer">0秒</span>
+                </div>
+            </div>
+            
+            <!-- カード配置グリッド -->
+            <div id="card-grid" class="card-grid"></div>
+
+            <div class="game-footer">
+                <button id="btn-abort-trigger" class="btn btn-danger">中断する</button>
+            </div>
+        </section>
+
+        <!-- リザルト画面 -->
+        <section id="screen-result" class="screen">
+            <h2 class="section-title text-clear">祓魔完了 (クリア)</h2>
+            <div class="result-box">
+                <p class="result-label">難易度</p>
+                <p id="result-diff" class="result-value">-</p>
+                <p class="result-label">クリアタイム</p>
+                <p id="result-time" class="result-value-time">-</p>
+                <p id="result-new-record" class="new-record-badge" style="display: none;">🎉 ベスト記録更新！</p>
+            </div>
+            <div class="result-buttons">
+                <button id="btn-retry" class="btn">もう一度プレイ</button>
+                <a id="btn-share-x" class="btn btn-x" target="_blank" rel="noopener noreferrer">Xでタイムを共有</a>
+                <button class="btn-back btn-link">メインに戻る</button>
+            </div>
+        </section>
+
+        <!-- 記録画面 -->
+        <section id="screen-records" class="screen">
+            <h2 class="section-title">過去の記録 (ベスト3)</h2>
+            <div id="records-container" class="records-container">
+                <!-- JavaScriptで動的に生成 -->
+            </div>
+            <button class="btn-back btn-link">メインに戻る</button>
+        </section>
+    </div>
+
+    <!-- アプリ内ゲーム中断確認モーダル -->
+    <div id="modal-abort" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-box">
+                <p class="modal-message">プレイ状況がリセットされます。<br>本当によろしいですか？</p>
+            <div class="modal-buttons">
+                <button id="btn-abort-yes" class="btn-modal btn-modal-yes">はい</button>
+                <button id="btn-abort-no" class="btn-modal btn-modal-no">いいえ</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
