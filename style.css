@@ -24,6 +24,7 @@ body {
     color: var(--color-text);
     overflow: hidden;
     height: 100vh;
+    height: 100dvh; /* スマホのアドレスバー展開時にも高さを追従させる */
     display: block;
     position: relative;
 }
@@ -59,6 +60,7 @@ body {
 
 .screen {
     display: none; width: 100%; height: 100vh;
+    height: 100dvh; /* スマホのアドレスバー展開時にも高さを追従させる */
     vertical-align: middle; text-align: center; padding: 40px 20px;
 }
 
@@ -123,6 +125,7 @@ body {
     transition: all 0.3s ease;
 }
 .btn-link::before {
+    content: '←';
     margin-right: 6px;
     transition: transform 0.3s ease;
 }
@@ -198,23 +201,25 @@ body {
 
 /* --- スマホ環境 (縦画面想定) --- */
 @media (max-width: 600px) {
-    .screen { padding: 20px 10px; } /* 余白を詰めて画面を広く使う */
+    .screen { padding: 15px 5px; } /* 余白を極限まで詰める */
+    .game-header { margin-bottom: 5px; }
+    .game-footer { margin-top: 5px; }
     .title { font-size: 34px; }
     
     /* Y行の数に合わせて max-width を計算し、縦長の画面でも下がはみ出さないように自動縮小させる */
-    .grid-8 { max-width: calc((100vh - 180px) / 2); }
+    .grid-8 { max-width: calc((100vh - 260px) / 2); }
     .grid-8 .card { width: 50%; aspect-ratio: 1; }
     
-    .grid-12 { max-width: calc((100vh - 180px) * 0.75); }
+    .grid-12 { max-width: calc((100vh - 260px) * 0.75); }
     .grid-12 .card { width: 33.333%; aspect-ratio: 1; }
     
-    .grid-16 { max-width: calc(100vh - 180px); }
+    .grid-16 { max-width: calc(100vh - 260px); }
     .grid-16 .card { width: 25%; aspect-ratio: 1; }
     
-    .grid-24 { max-width: calc((100vh - 180px) / 1.5); }
+    .grid-24 { max-width: calc((100vh - 260px) / 1.5); }
     .grid-24 .card { width: 25%; aspect-ratio: 1; }
     
-    .grid-32 { max-width: calc((100vh - 180px) / 2); }
+    .grid-32 { max-width: calc((100vh - 260px) / 2); }
     .grid-32 .card { width: 25%; aspect-ratio: 1; }
 }
 
