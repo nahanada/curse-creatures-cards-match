@@ -38,6 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // 中断確認モーダル要素
     const modalAbort = document.getElementById('modal-abort');
 
+    // 画像素材の総数
+    const TOTAL_IMAGES = 23;
+
     // -----------------------------------------------
     // 画面遷移関数
     // -----------------------------------------------
@@ -63,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const bgItem = document.createElement('div');
             bgItem.classList.add('bg-item');
             
-            const imgIndex = Math.floor(Math.random() * 16) + 1;
+            const imgIndex = Math.floor(Math.random() * TOTAL_IMAGES) + 1;
             bgItem.style.backgroundImage = `url('images/${imgIndex}.jpg')`;
             
             bgItem.style.left = `${Math.random() * 100}%`;
@@ -199,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cardGrid.className = `card-grid grid-${numCards}`;
         cardGrid.innerHTML = '';
 
-        const pool = Array.from({ length: 16 }, (_, i) => i + 1);
+        const pool = Array.from({ length: TOTAL_IMAGES }, (_, i) => i + 1);
         for (let i = pool.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [pool[i], pool[j]] = [pool[j], pool[i]];
